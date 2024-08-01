@@ -21,14 +21,15 @@ module.exports = (sequelize, DataTypes) => {
         review_id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: true,
+            allowNull: false,
         },
         glasses_id: {
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        reviewer: {
-            type: DataTypes.STRING,
+        user_id: {
+            type: DataTypes.INTEGER,
             allowNull: false
         },
         review: {

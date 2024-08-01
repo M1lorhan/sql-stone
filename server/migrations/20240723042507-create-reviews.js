@@ -13,7 +13,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      reviewer: {
+      user_id: {
         type: Sequelize.STRING,
         allowNull: false,
       },
