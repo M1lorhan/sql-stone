@@ -1,8 +1,8 @@
-const express = require('express');
-const glasses = express.Router();
+const glasses = require('express').Router();
 const db = require('../models')
 const { Glasses } = db
 
+//get all glasses
 glasses.get('/', async(req, res) => {
     try {
         const foundGlasses = await Glasses.findAll()

@@ -1,8 +1,8 @@
-const express = require('express');
-const orders = express.Router();
+const orders = require('express').Router();
 const db = require('../models')
 const { Orders } = db
 
+//get all orders
 orders.get('/', async(req, res) => {
     try {
         const foundOrders = await Orders.findAll()

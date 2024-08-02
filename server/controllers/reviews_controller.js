@@ -1,14 +1,15 @@
 const reviews = require('express').Router()
 const db = require('../models')
-const { Review } = db
+const { Reviews } = db
 
+//get all reviews
 reviews.get('/', async(req, res) => {
     try {
-        const foundReviews = await Review.findAll()
+        const foundReviews = await Reviews.findAll()
         res.status(200).json(foundReviews)
     } catch (error) {
         res.status(500).send("Server error")
-        console.log(err)
+        console.log(error)
     }
 })
 

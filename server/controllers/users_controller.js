@@ -1,8 +1,8 @@
-const express = require('express');
-const users = express.Router();
+const users = require('express').Router();
 const db = require('../models')
 const { Users } = db
 
+//get all users
 users.get('/', async(req, res) => {
     try {
         const foundUsers = await Users.findAll()
