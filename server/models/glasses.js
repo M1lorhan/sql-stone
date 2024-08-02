@@ -13,8 +13,11 @@ module.exports = (sequelize, DataTypes) => {
         Glasses.hasMany(Reviews, {
             foreignKey: "glasses_id",
             as: "reviews"
+            }),
+        Glasses.hasMany(Orders, {
+            foreignKey: "order_id",
+            as: "orders"
             })
-      
         }
     }
     Glasses.init({

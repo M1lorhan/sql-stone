@@ -33,13 +33,32 @@ module.exports = (sequelize, DataTypes) => {
     },
     user_email: {
       type: DataTypes.STRING,
+      unique: true,
       allowNull: false
     },
     user_password: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    user_address: {
+    street: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    additional_info: {
+      type: DataTypes.STRING,
+    },
+    city: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    state_or_province: {
+      type: DataTypes.STRING,
+    },
+    postal_code: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    country: {
       type: DataTypes.STRING,
       allowNull: false
     },
