@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom'
 import './navbar.css'; // CSS file for styling
 
 const Navbar = () => {
@@ -29,7 +28,7 @@ const Navbar = () => {
           </a>
         </li>
         <li className={`nav-item ${active === 'products' ? 'active' : ''}`}>
-          <a href="/products" className="nav-link" onClick={() => handleClick('products')}>
+          <a href="/product" className="nav-link" onClick={() => handleClick('products')}>
             Products
           </a>
         </li>

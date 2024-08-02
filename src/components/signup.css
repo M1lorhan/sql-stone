@@ -1,10 +1,10 @@
 .signup-container {
-  max-width: 700px;
+  max-width: 50vw;
   margin: 50px auto;
   padding: 20px;
   border: 2px solid #ccc;
   border-radius: 5px;
-  background-color: #000000;
+  background-color: #253237;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -19,15 +19,16 @@
 }
 
 label {
-  display: block;
-  margin-bottom: 5px;
+  display: flex;
+  text-align: center;
+  margin: 3px;
 }
 
 input[type="text"],
 input[type="email"],
 input[type="password"] {
   width: 100%;
-  padding: 8px;
+  padding: 5px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;

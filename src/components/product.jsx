@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react"
-import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom'
 
 
 export default function Products() {
