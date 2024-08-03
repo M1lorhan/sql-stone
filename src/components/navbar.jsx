@@ -10,32 +10,17 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      {/* Left side: Logo */}
-      <div className="navbar-left">
-        <img src="../images/MainLogo.png" alt="Logo" className="logo" />
-      </div>
-
       {/* Middle: Navigation Links */}
-      <ul className="nav-menu">
-        <li className={`nav-item ${active === 'home' ? 'active' : ''}`}>
+      <div>
           <a href="/home" className="nav-link" onClick={() => handleClick('home')}>
-            Home
+            Visionary Optical
           </a>
-        </li>
-        <li className={`nav-item ${active === 'about' ? 'active' : ''}`}>
-          <a href="/about" className="nav-link" onClick={() => handleClick('about')}>
-            About
-          </a>
-        </li>
-        <li className={`nav-item ${active === 'products' ? 'active' : ''}`}>
-          <a href="/product" className="nav-link" onClick={() => handleClick('products')}>
-            Products
-          </a>
-        </li>
-      </ul>
-
+      </div>
       {/* Right side: Login and Sign Up */}
       <div className="navbar-right">
+      <a href="/product" className="nav-link">
+          Products
+        </a>
         <a href="/login" className="nav-link">
           Login
         </a>

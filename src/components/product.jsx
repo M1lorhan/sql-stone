@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import './product.css'
 
 
 export default function Products() {

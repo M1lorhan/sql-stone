@@ -7,7 +7,6 @@ const Footer = () => {
       <div className="footer-right">
         <ul className="footer-links">
           <li><a href="/about">About Us</a></li>
-          <li><a href="/products">Products</a></li>
         </ul>
       </div>
     </footer>
