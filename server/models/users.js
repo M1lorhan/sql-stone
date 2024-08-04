@@ -27,7 +27,15 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
       allowNull: false
     },
-    user_name: {
+    first_name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    last_name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    phone: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -44,7 +52,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    additional_info: {
+    street_additional: {
       type: DataTypes.STRING,
     },
     city: {

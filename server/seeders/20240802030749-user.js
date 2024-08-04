@@ -5,7 +5,9 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.bulkInsert('Users', [
       {
-        user_name: 'Dude',
+        first_name: 'Dude',
+        last_name: 'McDude',
+        phone: '123-456-7890',
         user_email: 'Dude@Dude.com',
         user_password: 'The1Dude!',
         street: '123 Main St',
@@ -15,7 +17,9 @@ module.exports = {
         postal_code: '62701',
         country: 'USA'
       }, {
-        user_name: 'Steve',
+        first_name: 'Steve',
+        last_name: 'McSteve',
+        phone: '234-567-8901',
         user_email: 'steve@steve.com',
         user_password: '456DEF?',
         street: '456 Elm St',
@@ -25,7 +29,9 @@ module.exports = {
         postal_code: '10001',
         country: 'USA',
       }, {
-        user_name: 'Dave',
+        first_name: 'Creepy',
+        last_name: 'Dave',
+        phone: '345-678-9012',
         user_email: 'dave@creepydave.com',
         user_password: 'creepyDave1',
         street: 'Avenue des Champs-Élysées',
@@ -35,7 +41,9 @@ module.exports = {
         postal_code: '75008',
         country: 'France'
       }, {
-        user_name: 'Ted',
+        first_name: 'Ted',
+        last_name: 'McTed',
+        phone: '456-789-0123',
         user_email: 'Ted@ted.com',
         user_password: 'ABC123$',
         street: 'Shibuya 2-21-1',
