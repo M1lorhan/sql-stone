@@ -2,7 +2,6 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom'
 import NavBar from "./components/navbar"
-import Footer from "./components/footer"
 import Signup from "./components/signup"
 import Products from './components/product';
 import Cart from './components/cart';
@@ -14,13 +13,11 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Default />
         <NavBar />
-        <Footer />
         <Router>
           <main>
             <Routes>
-              <Route path='/' />
+              <Route path='/' element={<Default/>} />
               <Route path='/product' element={<Products />} />
               <Route path='/signup' element={<Signup />} />
               <Route path='/login' element={<Login />} />
