@@ -13,4 +13,32 @@ orders.get('/', async(req, res) => {
     }
 })
 
+//add order
+orders.post('/:order_id', async (req, res) => {
+    res.status(201).json({
+        status: "sucess",
+        data: {
+            orders: "order 1"
+        }
+    })
+})
+
+//update order
+orders.put('/:order_id', async (req, res) =>{
+    console.log(req.params.order_id)
+    res.status(200).json({
+        status: "sucess",
+        data: {
+            orders: "order 1"
+        }
+    })
+})
+
+//delete order
+orders.delete('/:order_id', async (req, res) =>{
+    res.status(204).json({
+        status: "sucess",
+    })
+})
+
 module.exports = orders

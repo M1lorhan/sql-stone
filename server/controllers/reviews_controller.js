@@ -13,4 +13,32 @@ reviews.get('/', async(req, res) => {
     }
 })
 
+//add review
+reviews.post('/:review_id', async (req, res) =>{
+    res.status(201).json({
+        status: "sucess",
+        data: {
+            reviews: "great job"
+        }
+    })
+})
+
+//update review
+reviews.put('/:review_id', async (req, res) =>{
+    console.log(req.params.review_id)
+    res.status(200).json({
+        status: "sucess",
+        data: {
+            reviews: "great job"
+        }
+    })
+})
+
+//delete reviews
+reviews.delete('/:review_id', async (req, res) =>{
+    res.status(204).json({
+        status: "sucess",
+    })
+})
+
 module.exports = reviews

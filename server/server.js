@@ -22,6 +22,7 @@ app.use('/api/orders', ordersController);
 app.use('/api/users', usersController);
 
 //listen
-app.listen(4005, () => {
-    console.log('server is running on port 4005')
+const port=4005
+app.listen(port, () => {
+    console.log(`server is running on port ${port}`)
 })
