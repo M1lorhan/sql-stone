@@ -11,10 +11,22 @@ module.exports = {
       },
       glasses_id: {
         type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'glasses',
+          },
+          key: 'glasses_id',
+        },
         allowNull: false,
       },
       user_id: {
         type: Sequelize.STRING,
+        references: {
+          model: {
+            tableName: 'users',
+          },
+          key: 'users_id',
+        },
         allowNull: false,
       },
       review: {

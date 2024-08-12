@@ -1,54 +1,91 @@
 const glasses = require('express').Router();
-const { data } = require('autoprefixer');
+const { where } = require('sequelize')
 const db = require('../models');
-const { Glasses } = db
+const { Glasses, Orders, Reviews, Users } = db
+const { Op } = require('sequelize');
 
-// Get all glasses
+// GET ALL GLASSES
 glasses.get('/', async (req, res) => {
     try {
-        const foundGlasses = await Glasses.findAll();
-        res.status(200).json(foundGlasses)
+        const foundGlasses = await Glasses.findAll({
+            include: [{ model: Reviews, as: 'reviews' }]
+        });
+        res.status(200).json(foundGlasses);
     } catch (error) {
         res.status(500).send("Server error");
-        console.log(error)
+        console.error(error);
     }
 });
 
-// Get glasses by ID
-glasses.get('/:glasses_id', async (req, res) =>{
-    const { glasses_id } = req.params
-    const glasses = await Glasses.fingById(glasses_id).populate('glasses')
-    res.render('glassesId', {
-        glasses
-    })
-})
 
-//add glasses
-glasses.post('/:glasses_id', async (req, res) =>{
-    res.status(201).json({
-        status: "sucess",
-        data: {
-            glasses: "sunglasses"
+// GET GLASSES BY NAME
+glasses.get('/:glasses_name', async (req, res) => {
+    try {
+        const foundGlasses = await Glasses.findOne({
+            where: { glasses_name: req.params.glasses_name }
+        });
+        if (foundGlasses) {
+            res.status(200).json(foundGlasses);
+        } else {
+            res.status(404).json({ message: "Glasses not found" });
         }
-    })
-})
+    } catch (error) {
+        console.error('Error fetching glasses:', error);
+        res.status(500).json({ message: 'Server error', error: error.message });
+    }
+});
 
-//updated glasses
-glasses.put('/:glasses_id', async (req, res) =>{
-    console.log(req.params.glasses_id)
-    res.status(200).json({
-        status: "sucess",
-        data: {
-            glasses: "sunglasses"
+// CREATE NEW GLASSES
+glasses.post('/', async (req, res) => {
+    try {
+        const newGlasses = await Glasses.create(req.body);
+        res.status(201).json({
+            message: 'Successfully created new glasses',
+            data: newGlasses
+        });
+    } catch (error) {
+        res.status(500).json({ message: 'Server error', error: error.message });
+    }
+});
+
+
+// UPDATE INDIVIDUAL GLASSES
+glasses.put('/:glasses_id', async (req, res) => {
+    try {
+        const [updatedRows] = await Glasses.update(req.body, {
+            where: { glasses_id: req.params.glasses_id }
+        });
+
+        if (updatedRows > 0) {
+            res.status(200).json({
+                message: 'Successfully updated glasses'
+            });
+        } else {
+            res.status(404).json({ message: 'Glasses not found' });
         }
-    })
-})
+    } catch (error) {
+        res.status(500).json({ message: 'Server error', error: error.message });
+    }
+});
 
-//delete glasses
-glasses.delete('/:glasses_id', async (req, res) =>{
-    res.status(204).json({
-        status: "sucess",
-    })
-})
+
+// DELETE INDIVIDUAL GLASSES
+glasses.delete('/:glasses_id', async (req, res) => {
+    try {
+        const deletedRows = await Glasses.destroy({
+            where: { glasses_id: req.params.glasses_id }
+        });
+
+        if (deletedRows > 0) {
+            res.status(200).json({
+                message: 'Successfully deleted glasses'
+            });
+        } else {
+            res.status(404).json({ message: 'Glasses not found' });
+        }
+    } catch (error) {
+        res.status(500).json({ message: 'Server error', error: error.message });
+    }
+});
 
 module.exports = glasses;

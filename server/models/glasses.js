@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         glasses_name: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false
         },
         inventory: {

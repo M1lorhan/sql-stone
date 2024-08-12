@@ -1,7 +1,10 @@
 const users = require('express').Router();
+const { where } = require('sequelize')
 const db = require('../models');
+const { Glasses, Orders, Reviews, Users } = db
+const { Op } = require('sequelize');
+const { data } = require('autoprefixer');
 const { use } = require('./glasses_controller');
-const { Users } = db
 
 //get all users
 users.get('/users', async(req, res) => {

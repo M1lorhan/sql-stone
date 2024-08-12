@@ -1,6 +1,9 @@
 const orders = require('express').Router();
-const db = require('../models')
-const { Orders } = db
+const { where } = require('sequelize')
+const db = require('../models');
+const { Glasses, Orders, Reviews, Users } = db
+const { Op } = require('sequelize');
+const { data } = require('autoprefixer');
 
 //get all orders
 orders.get('/', async(req, res) => {

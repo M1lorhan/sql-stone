@@ -19,7 +19,7 @@ export default function Glasses(){
             <ul>
                 { glasses.map((glasses, index)=>(
                     <li key={index} style={{ padding: '1em' }}>
-                        <div>{glasses.glasses_name}</div>
+                        <div>{glasses.glasses_name} Glasses</div>
                         <div>Price: ${glasses.price}</div>
                         <div style={{ whiteSpace: 'pre-wrap' }}>Features: {glasses.features}</div>
                         <div style={{ whiteSpace: 'pre-wrap' }}>Specifications: {glasses.specifications}</div>
