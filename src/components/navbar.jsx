@@ -9,11 +9,11 @@ function Navigation() {
   return (
     <Navbar sticky="top" expand="xl" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand as={Link} to='/'>Visionary Optical</Navbar.Brand>
+        <Navbar.Brand as={Link} to='/' style={{fontFamily: 'Playwrite NL', fontSize: '3em' }}>Visionary Optical</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <NavDropdown title="Products" id="basic-nav-dropdown">
+            <NavDropdown title="Products" id="basic-nav-dropdown" style={{fontSize: '1.5em'}}>
               <NavDropdown.Item 
                 as={Link} 
                 to='/glasses' 
@@ -61,6 +61,7 @@ function Navigation() {
               as={Link} 
               to='/signup' 
               aria-label="Sign up for an account"
+              style={{fontSize: '1.5em'}}
             >
               Sign Up
             </Nav.Link>
@@ -68,6 +69,7 @@ function Navigation() {
               as={Link} 
               to='/login' 
               aria-label="Log in to your account"
+              style={{fontSize: '1.5em'}}
             >
               Log In
             </Nav.Link>

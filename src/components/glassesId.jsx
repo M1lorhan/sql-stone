@@ -72,7 +72,7 @@ export default function GlassesId() {
         <div>
             <h1>{glasses.glasses_name} Glasses</h1>
                 <div style={{float: 'left'}}>
-                    <Carousel data-bs-theme="dark" style={{width: '60vh', height: 'auto', margin: '2em', padding: '2em'}}>
+                    <Carousel data-bs-theme="dark" style={{width: '60vh', height: 'auto', margin: '1em'}}>
                         {images.map((imgSrc, index) => (
                             <Carousel.Item key={index}>
                                 <img
@@ -83,15 +83,15 @@ export default function GlassesId() {
                         ))}
                     </Carousel>
                 </div>
-                <div style={{ float: 'right',  }}>
-                    <ul style={{width: '60vh', height: 'auto', margin: '2em', padding: '2em'}}>
+                <div style={{ float: 'right'}}>
+                    <ul style={{width: '60vh', height: 'auto', margin: '1em'}}>
                         <li>
-                            <strong>Price:</strong>
-                            <div style={{paddingBottom: '1em'}}> ${glasses.price}</div>
-                            <strong>Features:</strong>
-                            <div style={{ whiteSpace: 'pre-wrap', paddingBottom: '1em'}}>{glasses.features}</div>
-                            <strong>Specifications:</strong>
-                            <div style={{ whiteSpace: 'pre-wrap', paddingBottom: '2em'}}>{glasses.specifications}</div>
+                            <strong style={{fontSize: '1.5em'}}>Price:</strong>
+                            <div style={{paddingBottom: '1em', fontSize: '1.25em'}}> ${glasses.price}</div>
+                            <strong style={{fontSize: '1.5em'}}>Features:</strong>
+                            <div style={{ whiteSpace: 'pre-wrap', paddingBottom: '1em', fontSize: '1.25em'}}>{glasses.features}</div>
+                            <strong style={{fontSize: '1.5em'}}>Specifications:</strong>
+                            <div style={{ whiteSpace: 'pre-wrap', paddingBottom: '2em', fontSize: '1.25em'}}>{glasses.specifications}</div>
                         </li>
                     </ul>
                 </div>

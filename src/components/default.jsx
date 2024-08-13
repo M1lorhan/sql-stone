@@ -39,14 +39,14 @@ function Default() {
           <h3>Revolutionary Functionality</h3>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item>
+      <Carousel.Item data-bs-theme="dark">
         <img
           className="d-block w-100"
           src={CarouselImage4}
           alt="Sunglasses on railing by Joseph Greve on Unsplash"
         />
         <Carousel.Caption>
-          <h3>Innovative Design</h3>
+          <h3 style={{color: 'black'}}>Innovative Design</h3>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -56,7 +56,7 @@ function Default() {
           alt="Sunglasses on pool deck by David Lezcano on Unsplash"
         />
         <Carousel.Caption>
-          <h3>Pioneering Fashion</h3>
+          <h3 style={{color: 'black'}}>Pioneering Fashion</h3>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
