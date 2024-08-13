@@ -1,3 +1,6 @@
+import React from 'react';
+import Button from 'react-bootstrap/Button';
+import Carousel from 'react-bootstrap/Carousel';
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import AI1 from '../images/AI-1.jpg';
@@ -55,9 +58,9 @@ export default function GlassesId() {
     if (!glasses) return <div>No glasses found</div>;
 
     const imageMap = {
-        'AI-Enabled': [AI1, AI2, AI3],
-        'Augmented-Reality': [AR1, AR2, AR3],
-        'Heads-up-Display': [HUD1, HUD2, HUD3],
+        'AI': [AI1, AI2, AI3],
+        'AR': [AR1, AR2, AR3],
+        'HUD': [HUD1, HUD2, HUD3],
         'Smart': [Smart1, Smart2, Smart3],
         'Sun': [Sun1, Sun2, Sun3]
     };
@@ -68,23 +71,33 @@ export default function GlassesId() {
     return (
         <div>
             <h1>{glasses.glasses_name} Glasses</h1>
-            <ul>
-                <li>
-                    <strong>Price:</strong>
-                    <div style={{paddingBottom: '1em'}}> ${glasses.price}</div>
-                    <strong>Features:</strong>
-                    <div style={{ whiteSpace: 'pre-wrap', paddingBottom: '1em'}}>{glasses.features}</div>
-                    <strong>Specifications:</strong>
-                    <div style={{ whiteSpace: 'pre-wrap', paddingBottom: '2em'}}>{glasses.specifications}</div>
-                </li>
-
-                <div>
-                {images.map((image, index) => (
-                    <img key={index} src={image} alt={`${glasses.picture} ${index + 1}`} style={{ margin: '10px' }} />
-                ))}
-            </div>
-            <button>Add to Cart</button>
-            </ul>
+                <div style={{float: 'left'}}>
+                    <Carousel data-bs-theme="dark" style={{width: '60vh', height: 'auto', margin: '2em', padding: '2em'}}>
+                        {images.map((imgSrc, index) => (
+                            <Carousel.Item key={index}>
+                                <img
+                                    src={imgSrc}
+                                    alt={`${glasses.picture} ${index + 1}`}
+                                />
+                            </Carousel.Item>
+                        ))}
+                    </Carousel>
+                </div>
+                <div style={{ float: 'right',  }}>
+                    <ul style={{width: '60vh', height: 'auto', margin: '2em', padding: '2em'}}>
+                        <li>
+                            <strong>Price:</strong>
+                            <div style={{paddingBottom: '1em'}}> ${glasses.price}</div>
+                            <strong>Features:</strong>
+                            <div style={{ whiteSpace: 'pre-wrap', paddingBottom: '1em'}}>{glasses.features}</div>
+                            <strong>Specifications:</strong>
+                            <div style={{ whiteSpace: 'pre-wrap', paddingBottom: '2em'}}>{glasses.specifications}</div>
+                        </li>
+                    </ul>
+                </div>
+                <div style={{ clear: 'both'}}>
+                    <Button variant="primary" style={{ clear: 'both'}}>Add to Cart</Button>{' '}
+                </div>
         </div>
     );
 }
