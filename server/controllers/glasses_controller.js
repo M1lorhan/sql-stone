@@ -1,5 +1,4 @@
 const glasses = require('express').Router();
-const { where } = require('sequelize')
 const db = require('../models');
 const { Glasses, Orders, Reviews, Users } = db
 const { Op } = require('sequelize');
@@ -8,7 +7,15 @@ const { Op } = require('sequelize');
 glasses.get('/', async (req, res) => {
     try {
         const foundGlasses = await Glasses.findAll({
-            include: [{ model: Reviews, as: 'reviews' }]
+            include: [
+                {
+                    model: Reviews,
+                    as: 'reviews'
+                },
+                {
+                    model: Orders,
+                    as: "orders",
+                }]
         });
         res.status(200).json(foundGlasses);
     } catch (error) {
@@ -22,7 +29,16 @@ glasses.get('/', async (req, res) => {
 glasses.get('/:glasses_name', async (req, res) => {
     try {
         const foundGlasses = await Glasses.findOne({
-            where: { glasses_name: req.params.glasses_name }
+            where: { glasses_name: req.params.glasses_name },
+            include: [
+                {
+                    model: Orders,
+                    as: "orders",
+                },
+                {
+                    model: Reviews,
+                    as: "reviews",
+                }]
         });
         if (foundGlasses) {
             res.status(200).json(foundGlasses);

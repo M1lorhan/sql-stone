@@ -16,13 +16,6 @@ function Navigation() {
             <NavDropdown title="Products" id="basic-nav-dropdown" style={{fontSize: '1.5em'}}>
               <NavDropdown.Item 
                 as={Link} 
-                to='/glasses' 
-                aria-label="View our Glasses collection"
-              >
-                Glasses
-              </NavDropdown.Item>
-              <NavDropdown.Item 
-                as={Link} 
                 to='/glasses/Sun' 
                 aria-label="View our Sunglasses collection"
               >

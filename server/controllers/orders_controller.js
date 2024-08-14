@@ -1,47 +1,104 @@
 const orders = require('express').Router();
-const { where } = require('sequelize')
 const db = require('../models');
 const { Glasses, Orders, Reviews, Users } = db
 const { Op } = require('sequelize');
-const { data } = require('autoprefixer');
 
-//get all orders
-orders.get('/', async(req, res) => {
+//GET ALL ORDERS
+orders.get('/', async (req, res) => {
     try {
-        const foundOrders = await Orders.findAll()
-        res.status(200).json(foundOrders)
+        const foundOrders = await Orders.findAll({
+            include: [
+                {
+                    model: Glasses,
+                    as: 'glasses'
+                },
+                {
+                    model: Users,
+                    as: "users",
+                }]
+        });
+        res.status(200).json(foundOrders);
     } catch (error) {
-        res.status(500).send("Server error")
-        console.log(error)
+        res.status(500).send("Server error");
+        console.error(error);
     }
-})
+});
 
-//add order
-orders.post('/:order_id', async (req, res) => {
-    res.status(201).json({
-        status: "sucess",
-        data: {
-            orders: "order 1"
+//GET INDIVIDUAL ORDER
+orders.get('/:order_id', async (req, res) => {
+    try {
+        const foundOrder = await Orders.findOne({
+            where: { order_id: req.params.order_id },
+            include: [
+                {
+                    model: Glasses,
+                    as: "glasses",
+                },
+                {
+                    model: Users,
+                    as: "users",
+                }]
+        });
+        if (foundOrder) {
+            res.status(200).json(foundOrder);
+        } else {
+            res.status(404).json({ message: "Order not found" });
         }
-    })
-})
+    } catch (error) {
+        console.error('Error fetching order:', error);
+        res.status(500).json({ message: 'Server error', error: error.message });
+    }
+});
 
-//update order
+// CREATE NEW ORDER
+orders.post('/', async (req, res) => {
+    try {
+        const newOrder = await Orders.create(req.body);
+        res.status(201).json({
+            message: 'Successfully created new order',
+            data: newOrder
+        });
+    } catch (error) {
+        res.status(500).json({ message: 'Server error', error: error.message });
+    }
+});
+
+// UPDATE INDIVIDUAL ORDER
 orders.put('/:order_id', async (req, res) =>{
-    console.log(req.params.order_id)
-    res.status(200).json({
-        status: "sucess",
-        data: {
-            orders: "order 1"
-        }
-    })
-})
+    try {
+        const [updatedRows] = await Orders.update(req.body, {
+            where: { order_id: req.params.order_id }
+        });
 
-//delete order
+        if (updatedRows > 0) {
+            res.status(200).json({
+                message: 'Successfully updated order'
+            });
+        } else {
+            res.status(404).json({ message: 'Order not found' });
+        }
+    } catch (error) {
+        res.status(500).json({ message: 'Server error', error: error.message });
+    }
+});
+
+// DELETE INDIVIDUAL ORDER
 orders.delete('/:order_id', async (req, res) =>{
-    res.status(204).json({
-        status: "sucess",
-    })
-})
+    try {
+        const deletedRows = await Orders.destroy({
+            where: { order_id: req.params.order_id }
+        });
+
+        if (deletedRows > 0) {
+            res.status(200).json({
+                message: 'Successfully deleted order'
+            });
+        } else {
+            res.status(404).json({ message: 'Order not found' });
+        }
+    } catch (error) {
+        res.status(500).json({ message: 'Server error', error: error.message });
+    }
+});
 
 module.exports = orders
